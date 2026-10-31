@@ -1,6 +1,11 @@
 (function () {
     'use strict';
 
+    // MODIFIED: no smooth scrolling for "reduce motion" or aaAccessibilityPlus "Stop Motion"
+    function scrollBehavior() {
+        return (window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('aa-motion-stop')) ? 'auto' : 'smooth';
+    }
+
     function loadScript(src, onload) {
         var s = document.createElement('script');
         s.src = src;
@@ -124,10 +129,10 @@
                     if (!thumb) return;
                     if (horizontal) {
                         var target = thumb.offsetLeft - (track.clientWidth / 2) + (thumb.offsetWidth / 2);
-                        track.scrollTo({ left: target, behavior: 'smooth' });
+                        track.scrollTo({ left: target, behavior: scrollBehavior() });
                     } else {
                         var target2 = thumb.offsetTop - (track.clientHeight / 2) + (thumb.offsetHeight / 2);
-                        track.scrollTo({ top: target2, behavior: 'smooth' });
+                        track.scrollTo({ top: target2, behavior: scrollBehavior() });
                     }
                 }
                 function goTo(i) {
