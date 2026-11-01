@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    // MODIFIED: no smooth scrolling for "reduce motion" or aaAccessibilityPlus "Stop Motion"
+    // MODIFIED: no smooth scrolling for "reduce motion" or AccessibilityPlus "Stop Motion"
     function scrollBehavior() {
-        return (window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('aa-motion-stop')) ? 'auto' : 'smooth';
+        return (window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('ap-motion-stop')) ? 'auto' : 'smooth';
     }
 
     function loadScript(src, onload) {
